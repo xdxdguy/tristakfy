@@ -9,14 +9,22 @@ A personal, phone-first music web app for iPhone (works on Android too). Two sep
 
 Personal use only. Using YouTube/SoundCloud audio this way is against their terms of service, and app stores won't accept it.
 
-## What was tested (and what wasn't)
+## Getting started (your own copy)
 
-| Tested here (demo mode, phone-size browser) | NOT tested yet |
-| --- | --- |
-| Layout at 375x812, both search tabs, queue, next/prev, shuffle/repeat, likes, playlists, lyrics sync, settings, the YouTube-to-SoundCloud fallback | **Real YouTube Music and SoundCloud calls**: a test of the SoundCloud code was blocked, so `soundcloud.py` and `youtube.py` have only been syntax-checked |
-| | **Real iPhone**: lock-screen controls, background playback, Home Screen install |
+You need a Windows PC with **Python 3.12** ([python.org](https://www.python.org/downloads/); tick "Add python.exe to PATH" when installing). For the iPhone you also need **Tailscale** (free).
 
-Expect to fix small things the first time you run it against the real services; those sites change often.
+1. Download this repository (`git clone ...`, or Download ZIP and unzip it).
+2. In the `music-app` folder, open PowerShell and run `.\run-home.ps1`. The first run sets up Python by itself (a few minutes), then opens the app in your browser. If Windows says scripts are disabled, run `powershell -ExecutionPolicy Bypass -File .\run-home.ps1` instead.
+3. For your iPhone, follow **Use it on your iPhone** below, with your own Tailscale account.
+
+The copy starts empty: no playlists, likes or history. Everything you add stays in your copy.
+
+## Your data stays yours
+
+- Each copy keeps its own playlists, likes, play stats, chart history and cover cache in its own data folder: `music-app\data` by default, or wherever `DATA_DIR` in your private `.env` file points (see `.env.example`). That folder and `.env` are never put in git, so sharing the code never shares anyone's data.
+- A copy never talks to anyone else's copy. On the phone, each server address keeps separate app storage, so two copies never mix even on the same phone.
+- The server only answers the PC it runs on (`HOST=127.0.0.1`); your phone reaches it through `tailscale serve`, which counts as that PC. Other people on the same Wi-Fi or behind the same IP address can't open it. To open it to your network on purpose, set `HOST=0.0.0.0` together with an `ACCESS_KEY` in `.env`.
+- Two copies on one PC don't collide either: each picks the next free port if its own is taken, and a different port means separate storage in the browser.
 
 ## Try it in 2 minutes (demo, no music services)
 
@@ -62,7 +70,7 @@ Each song is matched on YouTube Music (home server) and falls back to SoundCloud
 
 ## Sync between phone and PC
 
-Likes and playlists are also stored on the home server (`data/library.json`), and every device that points at that server syncs with it: on open, every 2 minutes, and a few seconds after each change. Deleting a playlist or un-liking a song on one device removes it everywhere. Settings → **Sync now** forces it. If the server is off, changes stay on the device and sync later. Back up `data/` along with the project.
+Likes and playlists are also stored on the home server (`data/library.json`), and every device that points at that server syncs with it: on open, every 2 minutes, and a few seconds after each change. Deleting a playlist or un-liking a song on one device removes it everywhere. Settings → **Sync now** forces it. If the server is off, changes stay on the device and sync later. Back up your data folder (`data/`, or your `DATA_DIR`) now and then.
 
 ## Stats and Discover
 

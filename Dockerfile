@@ -7,6 +7,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY server server
 COPY web web
-ENV ENABLE_YOUTUBE=0 ENABLE_SOUNDCLOUD=1 PORT=8000
+# HOST=0.0.0.0: a cloud server has to answer everyone (protect it with ACCESS_KEY)
+ENV ENABLE_YOUTUBE=0 ENABLE_SOUNDCLOUD=1 PORT=8000 HOST=0.0.0.0
 EXPOSE 8000
 CMD ["python", "server/app.py"]

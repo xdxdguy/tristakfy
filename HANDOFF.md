@@ -3,6 +3,8 @@
 Saved 2026-11-19, updated 2026-11-21. Everything is in this folder; nothing depends on a Claude session. **README.md** explains every feature in detail; this page is the short "pick it up again" version.
 
 ## Start it
+Sharing: this folder is a git repo. Data (`data/` or `DATA_DIR`) and `.env` are git-ignored, and the server only answers this PC plus Tailscale (`HOST`, see README "Your data stays yours").
+
 Double-click the **Tristakfy** shortcut on the Desktop (runs `run-home.ps1`: starts the server, opens the app). If Python won't start, turn Avast off (it crashed this PC twice). If the shortcut ever breaks, run `.\run-home.ps1` from this folder in PowerShell. Port 8000 is taken by another program, so it uses 8001 (it picks the next free port itself).
 
 First time on a new PC: `python -m venv .venv`, then `.venv\Scripts\python.exe -m pip install -r requirements.txt` (the shortcut does this by itself when `.venv` is missing; if a run is interrupted and leaves a half-built `.venv`, delete that folder and start again).
@@ -35,4 +37,4 @@ Home (Trending artists, Recently played, Stats), Search (YouTube and SoundCloud 
 Edge-swipe back is built; not built: a light theme, sharing playlists, per-device settings sync, background-download resume after iOS pauses the app, blends for streamed songs, beat-matched blends.
 
 ## Files
-`server/` (FastAPI: app.py, youtube.py, soundcloud.py, discover.py, genres.py, artproxy.py, mp4fix.py) · `web/` (the phone app: index.html, app.js, style.css, sw.js) · `data/` (library.json = your synced playlists/likes/stats, charts.json, genres.json, art/ cover cache; **back up library.json** or use Settings -> Back up library) · `tools/make_icons.py` · `run-home.ps1` · `Dockerfile` (SoundCloud-only cloud server).
+`server/` (FastAPI: app.py, youtube.py, soundcloud.py, discover.py, genres.py, artproxy.py, mp4fix.py) · `web/` (the phone app: index.html, app.js, style.css, sw.js) · your data folder (library.json = synced playlists/likes/stats, charts.json, genres.json, art/ cover cache; **back up library.json** or use Settings -> Back up library): `data/` by default, or `DATA_DIR` in the private `.env` file. On the original PC that's `Documents\Tristakfy\my-data`, next to the app folder · `tools/make_icons.py` · `run-home.ps1` · `Dockerfile` (SoundCloud-only cloud server).

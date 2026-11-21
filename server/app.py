@@ -12,6 +12,11 @@ Settings (environment variables):
   ACCESS_KEY         if set, every /api call needs ?k=<key> (keep strangers off a public server)
   DEMO               1 = fake songs and test tones, for trying the app without any music service
   PORT               default 8000
+  HOST               who can connect: 127.0.0.1 (default) = only this PC, which includes your phone through
+                     `tailscale serve`; 0.0.0.0 = every device on the network (the cloud server uses this)
+  DATA_DIR           where this copy keeps its playlists, likes, stats and caches (default: ./data)
+
+They can also go in a private `.env` file next to README.md (see .env.example and settings.py).
 """
 
 from __future__ import annotations
@@ -33,6 +38,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, RedirectResponse, Response, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from starlette.concurrency import run_in_threadpool
+
+import settings  # noqa: F401  (first: reads .env and picks this copy's data folder)
 
 
 def _flag(name: str, default: str = "1") -> bool:
@@ -764,9 +771,12 @@ if __name__ == "__main__":
     import uvicorn
 
     port = _free_port(int(os.environ.get("PORT", "8000")))
+    host = os.environ.get("HOST", "").strip() or "127.0.0.1"
     url = f"http://localhost:{port}"
-    print(f"\n  {APP_NAME} is running at {url}\n  (for your iPhone, see README.md: Tailscale)\n", flush=True)
+    who = "only this PC (and your phone through Tailscale)" if host in ("127.0.0.1", "localhost") else f"any device that can reach {host}"
+    print(f"\n  {APP_NAME} is running at {url}\n  Who can open it: {who}\n  Your data: {settings.DATA_DIR}\n"
+          f"  (for your iPhone, see README.md: Tailscale)\n", flush=True)
     if _flag("OPEN_BROWSER", "0"):
         # a moment's delay so the page loads after the server is listening
         threading.Timer(1.5, lambda: webbrowser.open(url)).start()
-    uvicorn.run(app, host="0.0.0.0", port=port)
+    uvicorn.run(app, host=host, port=port)
