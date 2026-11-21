@@ -9,6 +9,8 @@ A personal, phone-first music web app for iPhone (works on Android too). Two sep
 
 Personal use only. Using YouTube/SoundCloud audio this way is against their terms of service, and app stores won't accept it.
 
+> **New here? Follow [SETUP.md](SETUP.md)**: step by step for the PC, Tailscale and adding the app to your iPhone's Home Screen (and a section for an AI assistant helping you).
+
 ## Getting started (your own copy)
 
 You need a Windows PC with **Python 3.12** ([python.org](https://www.python.org/downloads/); tick "Add python.exe to PATH" when installing). For the iPhone you also need **Tailscale** (free).
