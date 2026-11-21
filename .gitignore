@@ -1,0 +1,11 @@
+# Your own data never goes into git: playlists, likes, play stats, chart history, cover cache
+data/
+
+# Python environment and caches (each copy makes its own)
+.venv/
+__pycache__/
+*.pyc
+
+# Local settings for one person's setup
+.env
+*.log

@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0612">
+  <!-- Home Screen app on iPhone -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Tristakfy">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <script>(function(){var d=document.documentElement.dataset,st={};try{st=JSON.parse(localStorage.getItem("driftwave.v1")||"{}").settings||{}}catch(e){}var y=st.style||{};d.theme=st.theme||"sunset";d.covers=y.covers||"circle";d.bg=y.bg||"aurora";d.spin=y.spin||"on"})()</script>
+  <link rel="stylesheet" href="style.css">
+  <title>Tristakfy</title>
+</head>
+<body>
+  <!-- icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-home" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3.2 3 10.4V21h6.5v-6h5v6H21V10.4L12 3.2Zm0 2.5 7 5.6V19h-2.5v-6h-9v6H5v-7.7l7-5.6Z"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><path fill="currentColor" d="M10.5 3a7.5 7.5 0 0 1 5.96 12.05l4.25 4.24-1.42 1.42-4.24-4.25A7.5 7.5 0 1 1 10.5 3Zm0 2a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11Z"/></symbol>
+      <symbol id="i-lib" viewBox="0 0 24 24"><path fill="currentColor" d="M4 3h2v18H4V3Zm5 0h2v18H9V3Zm4.3 1.6 1.9-.7 6 16.8-1.9.7-6-16.8Z"/></symbol>
+      <symbol id="i-compass" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 2a8 8 0 1 1 0 16 8 8 0 0 1 0-16Zm4.3 3.7-2.5 6.1-6.1 2.5 2.5-6.1 6.1-2.5ZM12 10.9a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2Z"/></symbol>
+      <symbol id="i-refresh" viewBox="0 0 24 24"><path fill="currentColor" d="M17.65 6.35A7.96 7.96 0 0 0 12 4a8 8 0 1 0 7.73 10h-2.08A6 6 0 1 1 12 6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35Z"/></symbol>
+      <symbol id="i-download" viewBox="0 0 24 24"><path fill="currentColor" d="M11 3h2v9.2l3.3-3.3 1.4 1.4L12 16l-5.7-5.7 1.4-1.4 3.3 3.3V3ZM5 18h14v2H5v-2Z"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path fill="currentColor" d="m9.5 16.2-4.2-4.2-1.4 1.4 5.6 5.6L20.1 8.4 18.7 7 9.5 16.2Z"/></symbol>
+      <symbol id="i-video" viewBox="0 0 24 24"><path fill="currentColor" d="M4 5h11a2 2 0 0 1 2 2v2.6l4-2.3v9.4l-4-2.3V17a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm0 2v10h11V7H4Zm4 1.8 5 3.2-5 3.2V8.8Z"/></symbol>
+      <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5Z"/></symbol>
+      <symbol id="i-pause" viewBox="0 0 24 24"><path fill="currentColor" d="M6 4h4v16H6V4Zm8 0h4v16h-4V4Z"/></symbol>
+      <symbol id="i-next" viewBox="0 0 24 24"><path fill="currentColor" d="M5 5.2v13.6a.8.8 0 0 0 1.24.67L16 13v6h2.5V5H16v6L6.24 4.53A.8.8 0 0 0 5 5.2Z"/></symbol>
+      <symbol id="i-prev" viewBox="0 0 24 24"><path fill="currentColor" d="M19 5.2v13.6a.8.8 0 0 1-1.24.67L8 13v6H5.5V5H8v6l9.76-6.47A.8.8 0 0 1 19 5.2Z"/></symbol>
+      <symbol id="i-shuffle" viewBox="0 0 24 24"><path fill="currentColor" d="M17 3.5 21 7l-4 3.5V8h-1.6c-1.2 0-2.2.6-2.9 1.6L8.8 15c-1 1.5-2.6 2.5-4.4 2.5H3v-2h1.4c1.2 0 2.2-.6 2.9-1.6L11 8.6C12 7 13.6 6 15.4 6H17V3.5Zm0 10 4 3.5-4 3.5V18h-1.6c-1.8 0-3.4-1-4.4-2.5l-.6-.9 1.2-1.8 1 1.5c.6 1 1.7 1.7 2.8 1.7H17v-2.5ZM3 6.5h1.4c1.8 0 3.4 1 4.4 2.5l.6.9-1.2 1.8-1-1.5C6.6 9.2 5.5 8.5 4.4 8.5H3v-2Z"/></symbol>
+      <symbol id="i-repeat" viewBox="0 0 24 24"><path fill="currentColor" d="M17 2.5 21 6l-4 3.5V7H7a2 2 0 0 0-2 2v3H3V9a4 4 0 0 1 4-4h10V2.5ZM21 12v3a4 4 0 0 1-4 4H7v2.5L3 18l4-3.5V17h10a2 2 0 0 0 2-2v-3h2Z"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24"><path fill="currentColor" d="M12 20.5s-8.5-5.1-8.5-11A4.8 4.8 0 0 1 12 6.6a4.8 4.8 0 0 1 8.5 2.9c0 5.9-8.5 11-8.5 11Zm0-2.4c2.5-1.7 6.5-5 6.5-8.6a2.8 2.8 0 0 0-5.1-1.6L12 9.6l-1.4-1.7a2.8 2.8 0 0 0-5.1 1.6c0 3.6 4 6.9 6.5 8.6Z"/></symbol>
+      <symbol id="i-heart-fill" viewBox="0 0 24 24"><path fill="currentColor" d="M12 20.5s-8.5-5.1-8.5-11A4.8 4.8 0 0 1 12 6.6a4.8 4.8 0 0 1 8.5 2.9c0 5.9-8.5 11-8.5 11Z"/></symbol>
+      <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2" fill="currentColor"/><circle cx="12" cy="12" r="2" fill="currentColor"/><circle cx="19" cy="12" r="2" fill="currentColor"/></symbol>
+      <symbol id="i-down" viewBox="0 0 24 24"><path fill="currentColor" d="m12 15.6-7.3-7.3 1.4-1.4 5.9 5.9 5.9-5.9 1.4 1.4-7.3 7.3Z"/></symbol>
+      <symbol id="i-back" viewBox="0 0 24 24"><path fill="currentColor" d="m14.6 19.3-7.3-7.3 7.3-7.3 1.4 1.4-5.9 5.9 5.9 5.9-1.4 1.4Z"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path fill="currentColor" d="M6.4 5 12 10.6 17.6 5 19 6.4 13.4 12l5.6 5.6-1.4 1.4-5.6-5.6L6.4 19 5 17.6l5.6-5.6L5 6.4 6.4 5Z"/></symbol>
+      <symbol id="i-queue" viewBox="0 0 24 24"><path fill="currentColor" d="M3 5h14v2H3V5Zm0 6h14v2H3v-2Zm0 6h9v2H3v-2Zm13 0 6-3.5v7L16 17Z"/></symbol>
+      <symbol id="i-lyrics" viewBox="0 0 24 24"><path fill="currentColor" d="M4 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H8l-5 4V4a1 1 0 0 1 1-1Zm1 2v11.8L7.3 15H19V5H5Zm2 3h10v2H7V8Zm0 4h7v2H7v-2Z"/></symbol>
+      <symbol id="i-gear" viewBox="0 0 24 24"><path fill="currentColor" d="M12 8.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7Zm0 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm-1.6-8h3.2l.5 2.6c.6.2 1.1.5 1.6.9l2.5-.9 1.6 2.8-2 1.7a6.6 6.6 0 0 1 0 1.8l2 1.7-1.6 2.8-2.5-.9c-.5.4-1 .7-1.6.9l-.5 2.6h-3.2l-.5-2.6c-.6-.2-1.1-.5-1.6-.9l-2.5.9-1.6-2.8 2-1.7a6.6 6.6 0 0 1 0-1.8l-2-1.7 1.6-2.8 2.5.9c.5-.4 1-.7 1.6-.9l.5-2.6Z"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path fill="currentColor" d="M11 4h2v7h7v2h-7v7h-2v-7H4v-2h7V4Z"/></symbol>
+      <symbol id="i-addq" viewBox="0 0 24 24"><path fill="currentColor" d="M3 5h12v2H3V5Zm0 5h12v2H3v-2Zm0 5h8v2H3v-2Zm14-1v-3h2v3h3v2h-3v3h-2v-3h-3v-2h3Z"/></symbol>
+      <symbol id="i-next-up" viewBox="0 0 24 24"><path fill="currentColor" d="M3 6h10v2H3V6Zm0 5h10v2H3v-2Zm0 5h6v2H3v-2Zm12-9 6 5-6 5V7Z"/></symbol>
+      <symbol id="i-link" viewBox="0 0 24 24"><path fill="currentColor" d="M10.6 13.4a1 1 0 0 1 0-1.4l3.5-3.5a1 1 0 1 1 1.4 1.4L12 13.4a1 1 0 0 1-1.4 0ZM8.5 20a4.5 4.5 0 0 1-3.2-7.7l2.5-2.5 1.4 1.4-2.5 2.5a2.5 2.5 0 0 0 3.5 3.5l2.5-2.5 1.4 1.4-2.5 2.5A4.5 4.5 0 0 1 8.5 20Zm7.7-5.8-1.4-1.4 2.5-2.5a2.5 2.5 0 0 0-3.5-3.5l-2.5 2.5-1.4-1.4 2.5-2.5a4.5 4.5 0 0 1 6.4 6.4l-2.6 2.4Z"/></symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24"><path fill="currentColor" d="M9 3h6l1 2h4v2H4V5h4l1-2Zm-3 6h12l-1 12H7L6 9Zm2.2 2 .7 8h6.2l.7-8H8.2Z"/></symbol>
+      <symbol id="i-swap" viewBox="0 0 24 24"><path fill="currentColor" d="M7 4 3 8l4 4V9h11V7H7V4Zm10 8v3H6v2h11v3l4-4-4-4Z"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3a9 9 0 1 1 0 18 9 9 0 0 1 0-18Zm0 2a7 7 0 1 0 0 14 7 7 0 0 0 0-14Zm1 2v4.6l3.2 3.2-1.4 1.4L11 12.4V7h2Z"/></symbol>
+      <symbol id="i-edit" viewBox="0 0 24 24"><path fill="currentColor" d="m15.2 4.2 4.6 4.6L9 19.6H4.4V15L15.2 4.2Zm0 2.8-8.8 8.8v1.8h1.8L17 8.8 15.2 7Z"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- the living background: four soft colour fields that drift on their own and shift with every swipe and scroll -->
+  <div id="bg" aria-hidden="true"><div class="bgwrap">
+    <div class="bgl l1" data-depth="0.45"><i></i></div>
+    <div class="bgl l2" data-depth="0.8"><i></i></div>
+    <div class="bgl l3" data-depth="1.2"><i></i></div>
+    <div class="bgl l4" data-depth="1.7"><i></i></div>
+  </div></div>
+
+  <main id="views">
+    <section class="pane" id="pane-home"></section>
+    <section class="pane" id="pane-search"></section>
+    <section class="pane" id="pane-library"></section>
+    <section class="pane" id="pane-discover"></section>
+  </main>
+
+  <div id="mini" class="hidden paused" role="button" aria-label="Open player">
+    <div class="mini-main"><div class="art ph"></div><div class="meta"><div class="t"></div><div class="a"></div></div></div>
+    <button class="icon-btn" id="mini-like" aria-label="Like"><svg><use href="#i-heart"/></svg></button>
+    <button class="icon-btn" id="mini-prev" aria-label="Previous"><svg><use href="#i-prev"/></svg></button>
+    <button class="icon-btn" id="mini-pp" aria-label="Play"><svg><use href="#i-play"/></svg></button>
+    <button class="icon-btn" id="mini-next" aria-label="Next"><svg><use href="#i-next"/></svg></button>
+    <button class="icon-btn" id="mini-repeat" aria-label="Repeat"><svg><use href="#i-repeat"/></svg><span class="one hidden">1</span></button>
+    <div class="bar"><i></i></div>
+  </div>
+  <button id="mini-handle" class="hidden" aria-label="Show the song bar"><i></i></button>
+
+  <nav id="tabbar">
+    <i class="pill"></i>
+    <button data-tab="home" class="active"><svg><use href="#i-home"/></svg>Home</button>
+    <button data-tab="search"><svg><use href="#i-search"/></svg>Search</button>
+    <button data-tab="library"><svg><use href="#i-lib"/></svg>Your Library</button>
+    <button data-tab="discover"><svg><use href="#i-compass"/></svg>Discover</button>
+  </nav>
+
+  <section id="player" class="paused" aria-label="Now playing">
+    <div class="top">
+      <button class="icon-btn" id="p-close" aria-label="Close player"><svg><use href="#i-down"/></svg></button>
+      <div class="ctx"><span id="p-ctx-label">Playing from</span><b id="p-ctx"></b></div>
+      <button class="icon-btn" id="p-more" aria-label="More"><svg><use href="#i-more"/></svg></button>
+    </div>
+    <div class="stage"><div class="art big-art"></div></div>
+    <div class="info">
+      <div class="meta"><div class="t" id="p-title"></div><div class="a" id="p-artist"></div></div>
+      <button class="like" id="p-like" aria-label="Like"><svg><use href="#i-heart"/></svg></button>
+    </div>
+    <div class="seek" id="p-seek"><div class="track"><div class="buf"></div><div class="fill"></div></div><i class="abseg"></i><i class="abm a"></i><i class="abm b"></i><div class="knob"></div></div>
+    <div class="times"><span id="p-cur">0:00</span><span id="p-dur">0:00</span></div>
+    <div class="ab-bar hidden" id="ab-bar">
+      <span class="ab-end a">A <b id="ab-a">–</b><button data-ab="a-" aria-label="Start earlier">−</button><button data-ab="a+" aria-label="Start later">+</button></span>
+      <span class="ab-end b">B <b id="ab-b">–</b><button data-ab="b-" aria-label="End earlier">−</button><button data-ab="b+" aria-label="End later">+</button></span>
+      <button class="ab-clear" data-ab="clear" aria-label="Clear the loop">✕</button>
+    </div>
+    <div class="controls">
+      <button class="side" id="p-shuffle" aria-label="Shuffle"><svg><use href="#i-shuffle"/></svg><span class="smt hidden">✦</span></button>
+      <button id="p-prev" aria-label="Previous"><svg><use href="#i-prev"/></svg></button>
+      <button class="pp" id="p-pp" aria-label="Play"><svg><use href="#i-play"/></svg></button>
+      <button id="p-next" aria-label="Next"><svg><use href="#i-next"/></svg></button>
+      <button class="side" id="p-repeat" aria-label="Repeat"><svg><use href="#i-repeat"/></svg><span class="one hidden">1</span></button>
+    </div>
+    <div class="via" id="p-via"></div>
+    <div class="player-foot">
+      <button class="icon-btn" id="p-lyrics" aria-label="Lyrics"><svg><use href="#i-lyrics"/></svg></button>
+      <button id="p-ab" aria-label="A-B loop"><span class="ab-t">A–B</span></button>
+      <button class="icon-btn" id="p-queue" aria-label="Queue"><svg><use href="#i-queue"/></svg></button>
+    </div>
+
+    <div class="panel" id="lyrics-panel">
+      <div class="panel-head"><h3>Lyrics</h3><button class="icon-btn" data-close-panel aria-label="Close"><svg><use href="#i-close"/></svg></button></div>
+      <div class="panel-body lyrics-body" id="lyrics-body"></div>
+    </div>
+    <div class="panel" id="queue-panel">
+      <div class="panel-head"><h3>Queue</h3><button class="icon-btn" data-close-panel aria-label="Close"><svg><use href="#i-close"/></svg></button></div>
+      <div class="panel-body queue-body" id="queue-body"></div>
+    </div>
+  </section>
+
+  <div id="vid" class="hidden" role="dialog" aria-label="Video">
+    <div class="vid-bar"><button class="icon-btn" id="vid-close" aria-label="Close video"><svg><use href="#i-down"/></svg></button><div class="vid-meta"><div class="t" id="vid-title"></div><div class="a" id="vid-artist"></div></div></div>
+    <div class="vid-stage" id="vid-stage"></div>
+    <div class="vid-msg" id="vid-msg"></div>
+    <a class="btn vid-open" id="vid-open" target="_blank" rel="noopener">Open in YouTube</a>
+    <p class="vid-note">Plays in YouTube's own player, so it needs the internet but not your PC. Your music pauses while the video plays and carries on when you close it.</p>
+  </div>
+  <div id="pop-scrim" class="hidden"></div>
+  <div id="pop" class="hidden" role="menu"></div>
+  <div id="scrim"></div>
+  <div id="sheet" role="dialog"></div>
+  <div id="toast" role="status"></div>
+
+  <!-- One audio element for the whole app: iOS keeps playing in the background only if the same element is reused. -->
+  <audio id="audio" preload="auto" playsinline></audio>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
