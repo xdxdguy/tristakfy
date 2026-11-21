@@ -100,7 +100,7 @@ _lib_lock = threading.Lock()
 
 def _lib_read() -> dict:
     try:
-        return json.loads(LIB_FILE.read_text(encoding="utf-8"))
+        return json.loads(LIB_FILE.read_text(encoding="utf-8-sig"))   # (-sig: also a file saved by Notepad)
     except Exception:
         return {"rev": 0, "data": {}}
 
